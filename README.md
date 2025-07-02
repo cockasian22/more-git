@@ -29,3 +29,6 @@ irm https://github.com/cockasian22/more-git/raw/main/scripts/install.ps1 | iex
 
 ### Contributing:
 **All contribution guidelines can be found in** [CONTRIBUTING.md](CONTRIBUTING.md)
+
+---
+Original git logo by Jason Long under the Creative Commons Attribution 3.0 Unported
