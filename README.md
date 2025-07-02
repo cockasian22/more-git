@@ -1,3 +1,4 @@
+<img align="left" width="350" height=auto src="https://raw.githubusercontent.com/cockasian22/more-git/refs/heads/main/images/logo.png"></img>
 # more-git
 A collection of essential Git extensions to help you be more efficient and productive 
 
