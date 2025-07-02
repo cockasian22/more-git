@@ -1,0 +1,24 @@
+[alias]
+    more-help = "!f() { echo 'more-git commands:'; echo; echo '  undo       - Soft undo last commit'; echo '  timeline  - Enhanced history view'; echo '  whoblame  - Human-readable blame'; echo '  scratch   - Create scratch branch'; echo '  pr        - Create GitHub PR'; echo '  zap       - Delete files by pattern'; echo '  standup   - Show daily commits'; echo '  ignorelocal - Local gitignore'; echo '  mob       - Add co-author'; echo '  nuke      - Hard reset'; }; f"
+    undo = "!git reset --soft HEAD@{1}"
+    timeline = "!git log --graph --pretty=format:'%C(yellow)%h%Creset - %s %Cgreen(%cr) %C(bold blue)<%an>%Creset %C(red)%d%Creset'"
+    whoblame = "!f() { git blame -w -M -C $1 | cut -f1 -d' ' | sort | uniq | xargs git show -s --format='%an authored %h: %s (%ad)' --date=short; }; f"
+    scratch = "!git checkout -b scratch/$(date +%Y%m%d-%H%M%S)"
+    pr = "!gh pr create --fill"
+    zap = "!f() { git clean -fd \"$1\" && git checkout -- \"$1\"; }; f"
+    standup = "!git log --since='1 day ago' --author=$(git config user.email) --pretty=format:'- %s (%h)' --no-merges"
+    ignorelocal = "!f() { echo \"$1\" >> .git/local.gitignore && git rm --cached \"$1\"; }; f"
+    mob = "!f() { git config user.mob \"Co-authored-by: $1\"; }; f"
+    nuke = "!read -p 'Destroy ALL changes? (y/N) ' yn; [[ $yn == [Yy]* ]] && git reset --hard && git clean -fd || echo 'Aborted'"
+
+[color]
+    ui = auto
+    branch = auto
+    diff = auto
+    status = auto
+[color "branch"]
+    current = yellow reverse
+    local = yellow
+    remote = green
+[init]
+    templateDir = ~/.git-templates
